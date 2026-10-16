@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="1l2_RiYCAmp7s6J2NHcgw_LJhvbjY_CoSzl1ZSu_Lws" />
+  <title>Snake Game Classic - Play Free Retro Nokia Snake Online & Unblocked</title>
+  <meta name="description" content="Play the original Snake Game Classic online for free! Enjoy nostalgic Nokia 3310, Modern Green, and Cyberpunk Neon themes with Classic Wall and Wrap-around modes. Works unblocked on Chromebooks.">
+  <meta name="keywords" content="snake game, snake classic, google snake game, play snake online, nokia snake, snake unblocked, retro snake game, snake 3310">
+  <link rel="canonical" href="https://snake-game-classic.vercel.app/">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Snake Game Classic - Play Free Retro Snake Online">
+  <meta property="og:description" content="Relive the iconic Nokia Snake arcade game with smooth controls, multiple speeds, custom themes, and wrap-around modes.">
+  <meta property="og:url" content="https://snake-game-classic.vercel.app/">
+  <meta property="og:image" content="https://snake-game-classic.vercel.app/og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Snake Game Classic Online Free">
+  <meta name="twitter:description" content="The ultimate free classic Snake game in your browser. Eat apples, grow longer, and beat your high score.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://snake-game-classic.vercel.app/#app",
+        "name": "Snake Game Classic",
+        "url": "https://snake-game-classic.vercel.app/",
+        "applicationCategory": "GameApplication",
+        "genre": "Arcade Retro",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires HTML5 support",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Snake Game Classic is a responsive, fast-loading, client-side retro arcade game featuring Classic Wall and Wrap-around modes, Nokia 3310 and Neon visual styles, and synth sound effects."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://snake-game-classic.vercel.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you control the snake?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Control your snake using Arrow Keys (Up, Down, Left, Right) or W-A-S-D on keyboard. On mobile smartphones and tablets, swipe in any direction or use the on-screen digital D-pad."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between Classic Wall and Wrap-around modes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In Classic Wall mode, hitting the outer boundary ends the game immediately. In Wrap-around (Pass-Through) mode, the snake teleports to the opposite side of the screen when crossing any edge."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you play Snake Game Classic unblocked at school?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Snake Game Classic is 100% client-side HTML5 with no external tracking or heavy assets, allowing smooth, lightweight gameplay on school Chromebooks and restricted networks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does scoring work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Normal red apples grant 10 points. Golden apples appear periodically and grant 30 points. Playing on higher speed levels awards a higher score multiplier."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://snake-game-classic.vercel.app/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://snake-game-classic.vercel.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Snake Game Classic",
+            "item": "https://snake-game-classic.vercel.app/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <span class="brand-icon">🐍</span>
+          <div class="brand-text">
+            <span class="brand-title">SNAKE CLASSIC</span>
+            <span class="brand-badge">RETRO 1997</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button id="btn-sound" class="icon-btn" title="Toggle Sound" aria-label="Audio Toggle">
+            <span id="sound-icon">🔊</span>
+          </button>
+          <button id="btn-help" class="icon-btn" title="How to Play" aria-label="Help">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <div class="game-container">
+        <!-- Scores Row -->
+        <div class="scores-row">
+          <div class="score-box highlight">
+            <div class="label">Score</div>
+            <div id="score-val" class="value">0</div>
+          </div>
+          <div class="score-box">
+            <div class="label">Best Score</div>
+            <div id="best-score-val" class="value">0</div>
+          </div>
+        </div>
+
+        <!-- Controls Toolbar -->
+        <div class="toolbar-row">
+          <div class="btn-group">
+            <button id="btn-restart" class="btn primary" title="Restart Game">🔄 New Game</button>
+            <button id="btn-pause" class="btn" title="Pause Game">
+              <span id="pause-icon">⏸️</span>
+              <span id="pause-text">Pause</span>
+            </button>
+          </div>
+
+          <div class="btn-group">
+            <select id="select-speed" class="select-ctrl" aria-label="Speed Difficulty">
+              <option value="slow">Slow</option>
+              <option value="normal" selected>Normal</option>
+              <option value="fast">Fast</option>
+              <option value="insane">Insane ⚡</option>
+            </select>
+
+            <select id="select-mode" class="select-ctrl" aria-label="Game Mode">
+              <option value="classic" selected>Wall Dies</option>
+              <option value="wrap">Wrap-Around</option>
+            </select>
+
+            <select id="select-theme" class="select-ctrl" aria-label="Visual Theme">
+              <option value="modern" selected>Modern Dark</option>
+              <option value="nokia">Nokia 3310</option>
+              <option value="neon">Cyber Neon</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Canvas Area -->
+        <div class="canvas-wrapper">
+          <canvas id="snake-canvas"></canvas>
+          <div id="canvas-overlay" class="canvas-overlay">
+            <h3 id="overlay-title">🐍 Ready to Slither!</h3>
+            <p id="overlay-desc">Press any Arrow key, W-A-S-D, or Swipe to start!</p>
+          </div>
+        </div>
+
+        <!-- Mobile D-Pad -->
+        <div class="dpad-container">
+          <button class="dpad-btn" data-dir="up" aria-label="Move Up">▲</button>
+          <div class="dpad-row">
+            <button class="dpad-btn" data-dir="left" aria-label="Move Left">◀</button>
+            <button class="dpad-btn" data-dir="down" aria-label="Move Down">▼</button>
+            <button class="dpad-btn" data-dir="right" aria-label="Move Right">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Educational Section -->
+      <section class="seo-section">
+        <article class="seo-card">
+          <h1>Snake Game Classic: Play Free Retro Nokia Snake Online</h1>
+          <p>Welcome to <strong>Snake Game Classic</strong>, the pure, unblocked online recreation of the legendary arcade and mobile sensation that defined mobile gaming on Nokia devices in 1997. Built with responsive HTML5 Canvas and zero lag, slither your way across the grid, gobble nutritious apples, and test your reflexes as your snake extends across the screen.</p>
+
+          <h2>🎮 How to Play Snake</h2>
+          <ul>
+            <li><strong>Steering</strong>: Direct your snake with <strong>Arrow Keys</strong> or <strong>W, A, S, D</strong>. On touchscreens, simply swipe anywhere on the game board or tap the on-screen D-Pad.</li>
+            <li><strong>Eat & Grow</strong>: Guide the hungry snake into delicious apples. Each apple extends your body length by one segment and scores points.</li>
+            <li><strong>Avoid Crashes</strong>: Don't bite your own tail! In <em>Classic Mode</em>, hitting the perimeter wall is fatal. In <em>Wrap-Around Mode</em>, you smoothly teleport through walls.</li>
+            <li><strong>Bonus Gold Apples</strong>: Occasionally a shimmering golden apple will appear—grab it before it disappears for triple score points!</li>
+          </ul>
+
+          <h2>🏆 Master Snake Tactics & High-Score Strategies</h2>
+          <ul>
+            <li><strong>The Perimeter Coil (Wall-Hugging)</strong>: As your snake grows very long, orbit around the exterior borders and zigzag inward. This prevents self-trapping in the center.</li>
+            <li><strong>Leave an Escape Corridor</strong>: Never rush blindly into a tight dead-end pocket for an apple without knowing where your tail will clear an exit.</li>
+            <li><strong>The S-Curve Maneuver</strong>: When waiting for your tail to vacate a bottleneck, weave back and forth in tight S-curves to buy precious milliseconds without colliding.</li>
+            <li><strong>Nokia 3310 Nostalgia</strong>: Switch to the <em>Nokia 3310</em> theme in the toolbar for authentic monochrome green-screen retro aesthetics!</li>
+          </ul>
+        </article>
+
+        <!-- FAQ Section -->
+        <article class="seo-card">
+          <h2>❓ Frequently Asked Questions (FAQ)</h2>
+          <div class="faq-list">
+            <details open>
+              <summary>What was the original Snake game release?</summary>
+              <p>The snake concept originated in the 1976 arcade game <em>Blockade</em> by Gremlin. It achieved global icon status in 1997 when Taneli Armanto programmed <em>Snake</em> for the Nokia 6110 and later the legendary Nokia 3310.</p>
+            </details>
+            <details>
+              <summary>Can I play Snake Game Classic unblocked at school or work?</summary>
+              <p>Yes! Snake Game Classic is an ultra-lightweight client-side web application that runs smoothly on school Chromebooks, iOS, Android, and desktop browsers without requiring plugins or app downloads.</p>
+            </details>
+            <details>
+              <summary>What are the differences between the speed levels?</summary>
+              <p>Slow operates at 150ms per step (ideal for beginners), Normal runs at 115ms (balanced arcade pace), Fast runs at 80ms, and Insane runs at 50ms per step for lightning-fast reflex masters.</p>
+            </details>
+            <details>
+              <summary>Does Snake Game Classic save my high scores?</summary>
+              <p>Yes, your highest score is automatically saved locally in your browser so you can return anytime to challenge your record.</p>
+            </details>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Game Over Modal -->
+    <div id="modal-gameover" class="modal-overlay" hidden>
+      <div class="modal-card">
+        <div class="modal-icon">💥</div>
+        <h2 class="modal-title">Game Over!</h2>
+        <p class="modal-desc">You crashed into yourself or the boundary! Final score: <strong id="final-score">0</strong></p>
+        <button id="btn-play-again-loss" class="btn primary">Play Again 🐍</button>
+      </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="modal-help" class="modal-overlay" hidden>
+      <div class="modal-card">
+        <div class="modal-icon">📖</div>
+        <h2 class="modal-title">How to Play Snake</h2>
+        <p class="modal-desc">
+          Use Arrow Keys, WASD, or Touch Swipes to guide the snake.<br><br>
+          Eat red apples to grow and score 10 pts. Golden apples give 30 pts.<br><br>
+          Avoid biting your own body or crashing into the outer walls!
+        </p>
+        <button class="btn primary modal-close">Got It!</button>
+      </div>
+    </div>
+
+    <!-- Matrix Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <h3 class="matrix-title">🎮 More Free Casual Web Games</h3>
+        <nav class="matrix-grid" aria-label="Game Matrix">
+          <a href="https://seo-game-website.vercel.app/" class="matrix-link">
+            <span>🔷</span> Hextris Unblocked
+          </a>
+          <a href="https://waffle-game-unlimited.vercel.app/" class="matrix-link">
+            <span>🧇</span> Waffle Unlimited
+          </a>
+          <a href="https://falling-sand-game-one.vercel.app/" class="matrix-link">
+            <span>⏳</span> Falling Sand Game
+          </a>
+          <a href="https://hex-2048-nu.vercel.app/" class="matrix-link">
+            <span>🔢</span> 2048 Hexagonal
+          </a>
+          <a href="https://bloxorz-unblocked.vercel.app/" class="matrix-link">
+            <span>🧊</span> Bloxorz Unblocked
+          </a>
+          <a href="https://minesweeper-unlimited.vercel.app/" class="matrix-link">
+            <span>💣</span> Minesweeper Unlimited
+          </a>
+          <a href="https://snake-game-classic.vercel.app/" class="matrix-link current" aria-current="page">
+            <span>🐍</span> Snake Game Classic
+          </a>
+          <a href="https://flappy-bird-unblocked.vercel.app/" class="matrix-link">
+            <span>🐤</span> Flappy Bird Unblocked
+          </a>
+          <a href="https://wordle-unlimited.vercel.app/" class="matrix-link">
+            <span>🟩</span> Wordle Unlimited
+          </a>
+          <a href="https://doodle-jump-unblocked.vercel.app/" class="matrix-link">
+            <span>🦘</span> Doodle Jump Unblocked
+          </a>
+        </nav>
+        <p class="footer-copy">© 2026 Casual Game Matrix. Built with pure HTML5 Canvas for speed & accessibility.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
