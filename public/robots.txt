@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://snake-game-classic.vercel.app/sitemap.xml
+Sitemap: https://snake-game-classic-chi.vercel.app/sitemap.xml
